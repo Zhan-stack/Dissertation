@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import AppReducer from '../AppSlice';
+import DissDialogReducer from '../features/dissdialog/DissDIalogSlice'
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    AppReducer: AppReducer,
+    DissDialogReducer: DissDialogReducer
   },
 });
