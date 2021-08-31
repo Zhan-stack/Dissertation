@@ -1,9 +1,10 @@
 import React from 'react';
-import { Dialog, DialogTitle, DialogContent, DialogActions, Grid, Button } from '@material-ui/core';
+import { Dialog, DialogTitle, DialogContent, DialogActions, Grid, Button, Typography } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectShowDissDialog, setShow } from './DissDIalogSlice';
 import { buttonReduxClickedPayload } from '../imageswbuttons/ImagesWithButtons'
 import { buttonReduxClicked } from '../../AppSlice';
+import '../imageswbuttons/ImagesWithButtons.css';
 
 
 type DissDialogProps = {
@@ -22,33 +23,51 @@ export default function DissDialog(props: DissDialogProps) {
     return (
         <Dialog
             open={show}
-            maxWidth="md"
+            maxWidth="sm"
             fullWidth>
-            <DialogTitle>
-                Final Decision
-            </DialogTitle>
+            {/* <DialogTitle>
+                <Grid
+                    container
+                    direction="row"
+                    justify="center"
+                    spacing={1}>
+                    <Typography variant="h6">
+                        Final Decision
+                    </Typography>
+                </Grid>
+            </DialogTitle> */}
             <DialogContent>
-                Is this your final choice?
+                <Grid
+                    container
+                    direction="row"
+                    justify="center"
+                    spacing={1}>
+                    <Typography variant="subtitle1">
+                        Do you want to change your choice?
+                    </Typography>
+                </Grid>
             </DialogContent>
             <DialogActions>
                 <Grid
                     container
                     direction="row"
-                    justify="flex-end"
+                    justify="center"
                     spacing={1}>
                     <Grid item>
-                        <Button
+                        <button
                             id="no"
+                            className="button"
                             onClick={() => handleClose(false)}>
-                            No
-                        </Button>
+                            Look again
+                        </button>
                     </Grid>
                     <Grid item>
-                        <Button
+                        <button
                             id="yes"
+                            className="button2"
                             onClick={() => handleClose(true)}>
-                            Yes
-                        </Button>
+                            Save my choice
+                        </button>
                     </Grid>
                 </Grid>
             </DialogActions>

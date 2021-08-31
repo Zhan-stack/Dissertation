@@ -8,6 +8,9 @@ import {
 } from '../../AppSlice';
 import { setShow } from '../dissdialog/DissDIalogSlice';
 import ImageDialog from '../dissdialog/ImageDialog';
+import { Element, Link } from 'react-scroll';
+import { useStyles } from '../../Styles';
+import './ImagesWithButtons.css';
 
 type ImagesWithButtonsProps = {
     columns: any,
@@ -26,18 +29,21 @@ type ImageWithButton = {
 type ImageWithButtonButton = {
     id: string,
     name: string,
-    action: Function
+    action: Function,
+    correct: boolean
 }
 
 export type buttonReduxClickedPayload = {
     eventId: string,
-    columnName: string
+    columnName: string,
+    correct: boolean
 }
 
 export default function ImagesWithButtons(props: ImagesWithButtonsProps) {
     const {
         columns
     } = props
+    const classes = useStyles()
 
     const itemsIdSelected = useSelector(selectItemIdsSelected)
     const payload = useSelector(selectPayload)
@@ -71,6 +77,7 @@ export default function ImagesWithButtons(props: ImagesWithButtonsProps) {
 
 
     return (
+
         <Grid
             container
             direction='row'
@@ -86,26 +93,30 @@ export default function ImagesWithButtons(props: ImagesWithButtonsProps) {
                         spacing={1}>
                         <Grid item>
                             <img
-                                onMouseEnter={(e) => setMouseOverImage(true)}
-                                onMouseLeave={(e) => setMouseOverImage(false)}
-                                style={{ cursor: mouseOverImage ? 'pointer' : 'default' }}
-                                src={column.imageUrl} alt='Hello' onClick={() => {
-                                    setImageShow(true)
-                                    setImageUrl(column.imageUrl)
-                                }} />
+
+                                // style={{ cursor: mouseOverImage ? 'pointer' : 'default' }}
+                                src={column.imageUrl} alt='Hello'
+                                width="150" height="300"
+                            // onClick={() => {
+                            //     setImageShow(true)
+                            //     setImageUrl(column.imageUrl)
+                            // }} 
+                            />
                         </Grid>
                         <Grid item>
-                            <Button
+                            <button
+                                className="button"
+                                key={column.button.id}
                                 id={column.button.id}
                                 disabled={columns.disabled}
-                                color={checkIfSelected(column.button.id) ? 'primary' : undefined}
-                                variant={checkIfSelected(column.button.id) ? 'contained' : undefined}
+                                // color={checkIfSelected(column.button.id) ? 'primary' : undefined}
+                                // variant={checkIfSelected(column.button.id) ? 'contained' : undefined}
                                 onClick={(e) => {
-                                    dispatch(setPayload({ eventId: e.currentTarget.id, columnName: columns.columnName }))
+                                    dispatch(setPayload({ eventId: e.currentTarget.id, columnName: columns.columnName, correct: column.button.correct }))
                                     dispatch(setShow(true))
                                 }}>
-                                {column.button.name}
-                            </Button>
+                                {checkIfSelected(column.button.id) ? "Selected" : columns.disabled ? undefined : column.button.name}
+                            </button>
                         </Grid>
                     </Grid>
                 </Grid>

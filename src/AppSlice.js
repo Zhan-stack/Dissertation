@@ -11,24 +11,27 @@ const AppSlice = createSlice({
                 disabled: false,
                 values: [
                     {
-                        imageUrl: 'logo192.png',
+                        imageUrl: 'image1.png',
                         button: {
                             id: "1",
                             name: "Select",
+                            correct: false
                         }
                     },
                     {
-                        imageUrl: 'logo192.png',
+                        imageUrl: 'image2.png',
                         button: {
                             id: "2",
                             name: "Select",
+                            correct: false
                         }
                     },
                     {
-                        imageUrl: 'logo192.png',
+                        imageUrl: 'image3.png',
                         button: {
                             id: "3",
                             name: "Select",
+                            correct: true
                         }
                     },
                 ]
@@ -38,24 +41,27 @@ const AppSlice = createSlice({
                 disabled: false,
                 values: [
                     {
-                        imageUrl: 'logo192.png',
+                        imageUrl: 'group4.png',
                         button: {
                             id: "4",
                             name: "Select",
+                            correct: true
                         }
                     },
                     {
-                        imageUrl: 'logo192.png',
+                        imageUrl: 'group5.png',
                         button: {
                             id: "5",
                             name: "Select",
+                            correct: false
                         }
                     },
                     {
-                        imageUrl: 'logo192.png',
+                        imageUrl: 'group3.png',
                         button: {
                             id: "6",
                             name: "Select",
+                            correct: false
                         }
                     },
                 ]
@@ -65,24 +71,27 @@ const AppSlice = createSlice({
                 disabled: false,
                 values: [
                     {
-                        imageUrl: 'logo192.png',
+                        imageUrl: 'group9.png',
                         button: {
                             id: "7",
                             name: "Select",
+                            correct: false
                         }
                     },
                     {
-                        imageUrl: 'logo192.png',
+                        imageUrl: 'group6.png',
                         button: {
                             id: "8",
                             name: "Select",
+                            correct: false
                         }
                     },
                     {
-                        imageUrl: 'logo192.png',
+                        imageUrl: 'group8.png',
                         button: {
                             id: "9",
                             name: "Select",
+                            correct: true
                         }
                     },
                 ]
@@ -92,31 +101,35 @@ const AppSlice = createSlice({
                 disabled: false,
                 values: [
                     {
-                        imageUrl: 'logo192.png',
+                        imageUrl: 'img3.png',
                         button: {
                             id: "10",
                             name: "Select",
+                            correct: true
                         }
                     },
                     {
-                        imageUrl: 'logo192.png',
+                        imageUrl: 'img1.png',
                         button: {
                             id: "11",
                             name: "Select",
+                            correct: false
                         }
                     },
                     {
-                        imageUrl: 'logo192.png',
+                        imageUrl: 'img2.png',
                         button: {
                             id: "12",
                             name: "Select",
+                            correct: false
                         }
                     },
                 ]
             },
         ],
         payload: {},
-        startTime: Date.now()
+        startTime: Date.now(),
+        correct: []
     },
     reducers: {
         addIdToItems: (state, action) => {
@@ -126,6 +139,8 @@ const AppSlice = createSlice({
             console.log(action.payload)
             const event = action.payload.eventId
             const columnName = action.payload.columnName
+            const correct = action.payload.correct
+            state.correct.push(correct)
             state.itemIdsSelected.push({ id: event, columnName: columnName })
             const index = state.columns.findIndex((column) => column.columnName === columnName)
             state.columns[index].disabled = true
@@ -148,6 +163,7 @@ export const selectEnableDisableColumns = (state) => state.AppReducer.buttonColu
 export const selectColumns = (state) => state.AppReducer.columns
 export const selectPayload = (state) => state.AppReducer.payload
 export const selectStartTime = (state) => state.AppReducer.startTime
+export const selectCorrect = (state) => state.AppReducer.correct
 
 
 export const {

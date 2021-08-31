@@ -29,11 +29,11 @@ export default function TextWithButton(props: TextWithButtonProps) {
         >
             <Grid item>
                 <Typography variant="h4">
-                    {title}
+                    <b>{title}</b>
                 </Typography>
             </Grid>
             <Grid item>
-                <Typography variant="body1">
+                <Typography variant="subtitle1">
                     {body}
                 </Typography>
             </Grid>

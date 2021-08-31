@@ -4,10 +4,11 @@ import TextWithButton from './features/textwbutton/TextWithButton';
 import ImagesWithButtons from './features/imageswbuttons/ImagesWithButtons';
 import TextWithTitle from './features/textwtitle/TextWithTitle';
 import { useSelector } from 'react-redux';
-import { selectColumns, selectStartTime, selectItemIdsSelected, selectItemIdsDeselected } from './AppSlice';
+import { selectColumns, selectStartTime, selectItemIdsSelected, selectItemIdsDeselected, selectCorrect } from './AppSlice';
 import ThankYou from './components/ThankYou';
 import { config } from './config';
 import MenuIcon from '@material-ui/icons/Menu';
+import './App.css'
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
   const startTime = useSelector(selectStartTime)
   const selectedIds = useSelector(selectItemIdsSelected)
   const unselectedIds = useSelector(selectItemIdsDeselected)
+  const correct = useSelector(selectCorrect)
 
 
   const understoodClicked = () => {
@@ -31,6 +33,7 @@ function App() {
     const data = {
       selectedIds: selectedIds,
       unselectedIds: unselectedIds,
+      correct: correct,
       timeTaken: timeTaken
     }
     console.log((Date.now() - startTime) / 1000)
@@ -47,6 +50,8 @@ function App() {
       })
     const result = await response.json()
     console.log(result)
+
+
 
   }
 
@@ -66,7 +71,7 @@ function App() {
           position="fixed"
           style={{ backgroundColor: "black" }}>
           <Toolbar variant="dense">
-            <Grid
+            {/* <Grid
               container
               direction='row'
               justifyContent='flex-start'
@@ -80,7 +85,7 @@ function App() {
                   />
                 </IconButton>
               </Grid>
-            </Grid>
+            </Grid> */}
           </Toolbar>
         </AppBar>
         <Toolbar />
@@ -94,8 +99,8 @@ function App() {
             spacing={0}>
             <Grid item xs={6}>
               <TextWithButton
-                title='Grow your Subcription Business'
-                body='Outcome-oriented products that customers will love to buy. Zhan is the best boss in the world! And also the most beautiful. Let me keep writing stuff to see if it wraps the text'
+                title='How good is your eye for design details?'
+                body='Birmingham-based UX Software developer Zhanerke Kulmanova has come up with an interesting visual quiz that tests your knowledge and attention to design details. The web-based quiz presents three choices of iOS interface designs, and asks you to pick which one is better performing by your opinion.'
                 buttonObj={{
                   id: 'homePage',
                   name: 'Understood',
@@ -104,7 +109,7 @@ function App() {
               />
             </Grid >
             <Grid item >
-              <img src='logo512.png' alt='main' height='150' width='150' />
+              <img src='saly-7.png' alt='main' height='150' width='150' />
             </Grid>
           </Grid >
         </Grid >
@@ -115,15 +120,16 @@ function App() {
             justifyContent='center'
             alignItems='center'
             spacing={0}>
-            <Grid item xs={5}>
+            <Grid item>
+              <img src='saly-38.png' alt='main' height='150' width='150' />
+            </Grid>
+            <Grid item xs={6}>
               <TextWithTitle
-                title='Second Title'
-                body='Image is on the right'
+                title='Designing a user-friendly login page'
+                body="To ensure your users' experience is seamless from the beginning, you should design your login and register screens to be as intuitive as possible. These screens are generally the first step for a user when experiencing your product."
               />
             </Grid>
-            <Grid item xs={5}>
-              <img src='logo512.png' alt='main' height='250' width='250' />
-            </Grid>
+
           </Grid>
         </Grid>
 
@@ -148,12 +154,12 @@ function App() {
             alignItems='center'
             spacing={0}>
             <Grid item >
-              <img src='logo512.png' alt='main' height='250' width='250' />
+              <img src='saly-41.png' alt='main' height='150' width='150' />
             </Grid>
-            <Grid item >
+            <Grid item xs={6}>
               <TextWithTitle
-                title='Third Title'
-                body='Image is on the left'
+                title='Welcome your audience'
+                body='Homepages are the first thing a visitor sees when they come to your website. It makes or breaks the impression of your website. It’s a fact that the homepage gets the most views as compared to other pages on your website. The home page also improves the user experience of your website by directing the users to appropriate pages by providing intuitive navigation.'
               />
             </Grid>
           </Grid>
@@ -178,14 +184,14 @@ function App() {
             justifyContent='center'
             alignItems='center'
             spacing={0}>
-            <Grid item xs={5}>
+            <Grid item xs={6}>
               <TextWithTitle
-                title='Fourth Title'
-                body='Image is on the right'
+                title='What Makes a Great Product Page?'
+                body="Your product pages exist to give a potential customer the information they need to decide to buy an item from you while doing so clearly and effectively. When you can effectively communicate your offering in a way that buying feels natural, you can win big. It is when your product pages are boring or difficult to use that you'll struggle to convert browsers into customers."
               />
             </Grid>
-            <Grid item xs={5}>
-              <img src='logo512.png' alt='main' height='250' width='250' />
+            <Grid item >
+              <img src='saly-39.png' alt='main' height='150' width='150' />
             </Grid>
           </Grid>
         </Grid>
@@ -209,14 +215,14 @@ function App() {
             direction='row'
             justifyContent='center'
             alignItems='center'
-            spacing={0}>
+            spacing={1}>
             <Grid item >
-              <img src='logo512.png' alt='main' height='250' width='250' />
+              <img src='saly-40.png' alt='main' height='130' width='130' />
             </Grid>
-            <Grid item >
+            <Grid item xs={6}>
               <TextWithTitle
-                title='Fifth Title'
-                body='Image is on the left'
+                title='Tell Me About Me – User Profiles'
+                body='A user profile page, like any other mobile page, is constrained in terms of screen real estate on a smartphone. That means that you don’t want to try and cram too much information on to a profile page or you can make the page too complex for the user to want to interact with. That means focusing some of your design efforts on making the menu systems and the profile page aesthetically pleasing.'
               />
             </Grid>
           </Grid>
@@ -235,10 +241,30 @@ function App() {
           </Grid>
         </Grid>
         <Grid item>
-          <Button
+          <Grid
+            container
+            direction='row'
+            justifyContent='center'
+            alignItems='center'
+            spacing={0}>
+            <Grid item xs={5}>
+              <TextWithTitle
+                title=''
+                body='The fact that you are reading this message indicates that you have completed this Questionnaire, and that we owe you a debt of thanks. We truly value the information you have provided. Your responses will contribute to our analyses of creating better UI design solutions.
+                You can find your score by clicking Submit button below.'
+              />
+            </Grid>
+            <Grid item >
+              <img src='saly-2.png' alt='main' height='150' width='150' />
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid item>
+          <button
+            className="button1"
             onClick={() => finishedClickHandler()}>
             Submit
-          </Button>
+          </button>
         </Grid>
         <Grid container
           direction='row'

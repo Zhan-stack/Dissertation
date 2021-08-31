@@ -9,21 +9,22 @@ type TextWithTitleProps = {
 export default function TextWithTitle(props: TextWithTitleProps) {
     const {
         title,
-        body
+        body,
     } = props
     return (
         <Grid
             container
             direction="column"
+            justifyContent="flex-start"
             spacing={1}
         >
             <Grid item>
-                <Typography variant="h4">
-                    {title}
+                <Typography variant="h6">
+                    <b>{title}</b>
                 </Typography>
             </Grid>
             <Grid item>
-                <Typography variant="body1">
+                <Typography variant="subtitle1">
                     {body}
                 </Typography>
             </Grid>
