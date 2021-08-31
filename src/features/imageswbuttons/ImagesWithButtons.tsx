@@ -7,6 +7,7 @@ import {
     buttonNoClicked
 } from '../../AppSlice';
 import { setShow } from '../dissdialog/DissDIalogSlice';
+import ImageDialog from '../dissdialog/ImageDialog';
 
 type ImagesWithButtonsProps = {
     columns: any,
@@ -41,8 +42,11 @@ export default function ImagesWithButtons(props: ImagesWithButtonsProps) {
     const itemsIdSelected = useSelector(selectItemIdsSelected)
     const payload = useSelector(selectPayload)
 
-    const dispatch = useDispatch()
+    const [imageShow, setImageShow] = useState(false)
+    const [imageUrl, setImageUrl] = useState('')
+    const [mouseOverImage, setMouseOverImage] = useState(false)
 
+    const dispatch = useDispatch()
 
     const handleClose = (bool: boolean) => {
         dispatch(setShow(false))
@@ -52,33 +56,50 @@ export default function ImagesWithButtons(props: ImagesWithButtonsProps) {
         } else {
             dispatch(buttonNoClicked(payload))
         }
-        dispatch(setPayload({ eventId: "", columnName: "" }))
+        dispatch(setPayload({ eventId: '', columnName: '' }))
+    }
+
+    const checkIfSelected = (id: string) => {
+        const index = itemsIdSelected.findIndex((selectedIdObj: { id: string, columnName: string }) => selectedIdObj.id === id)
+        console.log(index)
+        if (index !== -1) {
+            return true
+        } else {
+            return false
+        }
     }
 
 
     return (
         <Grid
             container
-            direction="row"
-            justify="center"
+            direction='row'
+            justify='center'
             spacing={2}>
             {columns.values.map((column: ImageWithButton) => (
                 <Grid item>
                     <Grid
                         container
-                        direction="column"
-                        justify="center"
-                        alignItems="center"
+                        direction='column'
+                        justify='center'
+                        alignItems='center'
                         spacing={1}>
                         <Grid item>
-                            <img src={column.imageUrl} alt="Hello" />
+                            <img
+                                onMouseEnter={(e) => setMouseOverImage(true)}
+                                onMouseLeave={(e) => setMouseOverImage(false)}
+                                style={{ cursor: mouseOverImage ? 'pointer' : 'default' }}
+                                src={column.imageUrl} alt='Hello' onClick={() => {
+                                    setImageShow(true)
+                                    setImageUrl(column.imageUrl)
+                                }} />
                         </Grid>
                         <Grid item>
                             <Button
                                 id={column.button.id}
                                 disabled={columns.disabled}
-                                color={itemsIdSelected.includes(column.button.id) ? "primary" : undefined}
-                                variant={itemsIdSelected.includes(column.button.id) ? "contained" : undefined}
+                                color={checkIfSelected(column.button.id) ? 'primary' : undefined}
+                                variant={checkIfSelected(column.button.id) ? 'contained' : undefined}
                                 onClick={(e) => {
                                     dispatch(setPayload({ eventId: e.currentTarget.id, columnName: columns.columnName }))
                                     dispatch(setShow(true))
@@ -92,6 +113,10 @@ export default function ImagesWithButtons(props: ImagesWithButtonsProps) {
             }
             <DissDialog
                 handleClose={handleClose} />
+            <ImageDialog
+                imageUrl={imageUrl}
+                show={imageShow}
+                setShow={setImageShow} />
         </Grid >
     )
 }

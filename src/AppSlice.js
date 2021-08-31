@@ -40,28 +40,83 @@ const AppSlice = createSlice({
                     {
                         imageUrl: 'logo192.png',
                         button: {
-                            id: "logo1.png",
+                            id: "4",
                             name: "Select",
                         }
                     },
                     {
                         imageUrl: 'logo192.png',
                         button: {
-                            id: "logo2.png",
+                            id: "5",
                             name: "Select",
                         }
                     },
                     {
                         imageUrl: 'logo192.png',
                         button: {
-                            id: "logo3.png",
+                            id: "6",
+                            name: "Select",
+                        }
+                    },
+                ]
+            },
+            {
+                columnName: "columns3",
+                disabled: false,
+                values: [
+                    {
+                        imageUrl: 'logo192.png',
+                        button: {
+                            id: "7",
+                            name: "Select",
+                        }
+                    },
+                    {
+                        imageUrl: 'logo192.png',
+                        button: {
+                            id: "8",
+                            name: "Select",
+                        }
+                    },
+                    {
+                        imageUrl: 'logo192.png',
+                        button: {
+                            id: "9",
+                            name: "Select",
+                        }
+                    },
+                ]
+            },
+            {
+                columnName: "columns4",
+                disabled: false,
+                values: [
+                    {
+                        imageUrl: 'logo192.png',
+                        button: {
+                            id: "10",
+                            name: "Select",
+                        }
+                    },
+                    {
+                        imageUrl: 'logo192.png',
+                        button: {
+                            id: "11",
+                            name: "Select",
+                        }
+                    },
+                    {
+                        imageUrl: 'logo192.png',
+                        button: {
+                            id: "12",
                             name: "Select",
                         }
                     },
                 ]
             },
         ],
-        payload: {}
+        payload: {},
+        startTime: Date.now()
     },
     reducers: {
         addIdToItems: (state, action) => {
@@ -71,14 +126,15 @@ const AppSlice = createSlice({
             console.log(action.payload)
             const event = action.payload.eventId
             const columnName = action.payload.columnName
-            state.itemIdsSelected.push(event)
+            state.itemIdsSelected.push({ id: event, columnName: columnName })
             const index = state.columns.findIndex((column) => column.columnName === columnName)
             state.columns[index].disabled = true
         },
         buttonNoClicked: (state, action) => {
             console.log(action.payload)
             const event = action.payload.eventId
-            state.itemIdsDeselected.push(event)
+            const columnName = action.payload.columnName
+            state.itemIdsDeselected.push({ id: event, columnName: columnName })
         },
         setPayload: (state, action) => {
             state.payload = action.payload
@@ -87,9 +143,11 @@ const AppSlice = createSlice({
 })
 
 export const selectItemIdsSelected = (state) => state.AppReducer.itemIdsSelected
+export const selectItemIdsDeselected = (state) => state.AppReducer.itemIdsDeselected
 export const selectEnableDisableColumns = (state) => state.AppReducer.buttonColumnsDisabled
 export const selectColumns = (state) => state.AppReducer.columns
 export const selectPayload = (state) => state.AppReducer.payload
+export const selectStartTime = (state) => state.AppReducer.startTime
 
 
 export const {

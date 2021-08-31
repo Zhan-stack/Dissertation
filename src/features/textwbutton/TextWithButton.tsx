@@ -37,7 +37,7 @@ export default function TextWithButton(props: TextWithButtonProps) {
                     {body}
                 </Typography>
             </Grid>
-            <Grid item>
+            {/* <Grid item>
                 <Grid
                     container
                     direction="row"
@@ -49,8 +49,8 @@ export default function TextWithButton(props: TextWithButtonProps) {
                             {buttonObj.name}
                         </Button>
                     </Grid>
-                </Grid>
-            </Grid>
-        </Grid>
+                </Grid> */}
+            {/* </Grid> */}
+        </Grid >
     )
 }
