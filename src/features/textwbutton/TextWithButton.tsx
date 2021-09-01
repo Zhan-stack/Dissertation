@@ -33,7 +33,7 @@ export default function TextWithButton(props: TextWithButtonProps) {
                 </Typography>
             </Grid>
             <Grid item>
-                <Typography variant="subtitle1">
+                <Typography variant="subtitle1" align="justify">
                     {body}
                 </Typography>
             </Grid>

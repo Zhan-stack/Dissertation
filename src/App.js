@@ -99,8 +99,8 @@ function App() {
             spacing={0}>
             <Grid item xs={6}>
               <TextWithButton
-                title='How good is your eye for design details?'
-                body='Birmingham-based UX Software developer Zhanerke Kulmanova has come up with an interesting visual quiz that tests your knowledge and attention to design details. The web-based quiz presents three choices of iOS interface designs, and asks you to pick which one is better performing by your opinion.'
+                title='How Good is your Eye for Design Details?'
+                body='Birmingham-based UX Software developer Zhanerke Kulmanova has come up with an interesting visual quiz that tests your knowledge and attention to design details. The web-based quiz presents three choices of iOS interface designs, and asks you to pick which one is better performing in your opinion.'
                 buttonObj={{
                   id: 'homePage',
                   name: 'Understood',
@@ -125,8 +125,8 @@ function App() {
             </Grid>
             <Grid item xs={6}>
               <TextWithTitle
-                title='Designing a user-friendly login page'
-                body="To ensure your users' experience is seamless from the beginning, you should design your login and register screens to be as intuitive as possible. These screens are generally the first step for a user when experiencing your product."
+                title='Designing a User-friendly Login Page'
+                body="To ensure your users' experience is seamless from the beginning, you should design your login and registration screens to be as intuitive as possible. These screens are generally the first step for a user when experiencing your product. Which login page looks best?"
               />
             </Grid>
 
@@ -158,8 +158,8 @@ function App() {
             </Grid>
             <Grid item xs={6}>
               <TextWithTitle
-                title='Welcome your audience'
-                body='Homepages are the first thing a visitor sees when they come to your website. It makes or breaks the impression of your website. It’s a fact that the homepage gets the most views as compared to other pages on your website. The home page also improves the user experience of your website by directing the users to appropriate pages by providing intuitive navigation.'
+                title='Welcome your Audience'
+                body='Homepages are the first thing a visitor sees when they come to your website. It makes or breaks the impression of your website. It’s a fact that the homepage gets the most views as compared to other pages on your website. The home page also improves the user experience of your website by directing the users to appropriate pages by providing intuitive navigation. Which homepage would you like to visit most?'
               />
             </Grid>
           </Grid>
@@ -187,7 +187,7 @@ function App() {
             <Grid item xs={6}>
               <TextWithTitle
                 title='What Makes a Great Product Page?'
-                body="Your product pages exist to give a potential customer the information they need to decide to buy an item from you while doing so clearly and effectively. When you can effectively communicate your offering in a way that buying feels natural, you can win big. It is when your product pages are boring or difficult to use that you'll struggle to convert browsers into customers."
+                body="Your product pages exist to give a potential customer the information they need to decide to buy an item from you while doing so clearly and effectively. When you can effectively communicate your offering in a way that buying feels natural, you can win big. It is when your product pages are boring or difficult to use that you'll struggle to convert browsers into customers. Which screen would you like your favorite product to be advertised on?"
               />
             </Grid>
             <Grid item >
@@ -222,7 +222,7 @@ function App() {
             <Grid item xs={6}>
               <TextWithTitle
                 title='Tell Me About Me – User Profiles'
-                body='A user profile page, like any other mobile page, is constrained in terms of screen real estate on a smartphone. That means that you don’t want to try and cram too much information on to a profile page or you can make the page too complex for the user to want to interact with. That means focusing some of your design efforts on making the menu systems and the profile page aesthetically pleasing.'
+                body='A user profile page, like any other mobile page, is constrained in terms of screen real estate on a smartphone. That means that you don’t want to try and cram too much information on to a profile page or you can make the page too complex for the user to want to interact with. That means focusing some of your design efforts on making the menu systems and the profile page aesthetically pleasing. Which screen would you like to read about yourself from?'
               />
             </Grid>
           </Grid>

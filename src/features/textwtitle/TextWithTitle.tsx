@@ -24,7 +24,7 @@ export default function TextWithTitle(props: TextWithTitleProps) {
                 </Typography>
             </Grid>
             <Grid item>
-                <Typography variant="subtitle1">
+                <Typography variant="subtitle1" align="justify">
                     {body}
                 </Typography>
             </Grid>
